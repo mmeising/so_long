@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/10/26 22:44:05 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:22:06 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "../mlx/mlx.h"
+# include <fcntl.h>
+# include "mlx.h"
 # include "keys.h"
-# include "get_next_line.h"
+# include "libft.h"
 
 /*
  *	image struct
@@ -47,7 +48,7 @@ typedef struct	s_map
 	int		color;
 	int		size_x;
 	int		size_y;
-	int		size_tile;//example: = 64
+	int		t_s;//example: = 64
 }	t_map;
 
 typedef struct s_vars
@@ -55,7 +56,8 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_data		*img;
-	t_map		map;
+	t_data		*player_img;
+	t_map		*map;
 	t_coords	player_pos;
 	t_coords	coords;
 	t_coords	mouse_pos;
@@ -91,11 +93,12 @@ int				key_hook(int keycode, t_vars *vars);
 int				ft_close(int keycode, t_vars *vars);
 
 /*	CIRCLE STUFF==============================================================*/
-void			ft_put_circle(int r, t_data *img, unsigned int color,
-					t_coords middle);
+void			ft_put_circle(int r, t_vars *vars, unsigned int color, t_coords middle);
 void			ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
 					t_coords middle);
 t_coords		ft_set_coords( int x, int y);
+
+t_map			*check_map(char *path);
 
 void	prnt(char *str);
 

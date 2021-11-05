@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:28:41 by mmeising          #+#    #+#             */
-/*   Updated: 2021/10/26 22:18:01 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/04 23:55:22 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	put_wall(t_vars *vars, int x, int y)
 
 	i = 0;
 	count = 0;
-	ts = vars->map.size_tile;
-	x *= ts;
-	y *= ts;
+	ts = vars->map->t_s;
+	x = x * ts + x;
+	y = y * ts + y;
 	while (count < ts * 4)
 	{
 		my_mlx_pixel_put(vars->img, x, y, vars->color);
@@ -47,15 +47,19 @@ void	put_walls_on_screen(t_vars *vars)
 
 	x = 0;
 	y = 0;
-	while (x < 10)
-	{
-		put_wall(vars, x, 0);
-		x++;
-	}
-	x = 0;
-	while (y < 10)
-	{
-		put_wall(vars, 0, y);
-		y++;
-	}
+	(void)vars;
+	// while (x < 5)
+	// {
+	// 	put_wall(vars, x, 0);
+	// 	x++;
+	// }
+	// x = 0;
+	// while (y < 5)
+	// {
+	// 	put_wall(vars, 0, y);
+	// 	y++;
+	// }
+	// put_wall(vars, 2, 1);
+	// put_wall(vars, 2, 2);
+	// put_wall(vars, 1, 2);
 }

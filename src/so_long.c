@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/10/26 22:47:22 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:37:50 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(void)
 {
 	t_vars		vars;
 
-	vars.map = ft_check_map("map1.ber");
+	vars.map = check_map("map1.ber");
 	prnt("init\n");
 	vars.mlx = mlx_init();
 	prnt("new window\n");
@@ -67,15 +67,15 @@ int	main(void)
 	vars.img = malloc(sizeof(*(vars.img)));
 	if (vars.img == NULL)
 		return (0);
-	vars.map.size_tile = 100;
+	vars.map->t_s = 151;
+	vars.color = 0x00FF0000;
 	prnt("new image\n");
 	vars.img->img = mlx_new_image(vars.mlx, 1920, 1080);
 	prnt("get data addr\n");
 	vars.img->addr = mlx_get_data_addr(vars.img->img, &vars.img->bpp,
 			&vars.img->line_length, &vars.img->endian);
-	vars.color = 0x00FF0000;
-	vars.player_pos.x = 1 * vars.map.size_tile;
-	vars.player_pos.y = 1 * vars.map.size_tile;
+	vars.player_pos.x = 1;// * vars.map.t_s;
+	vars.player_pos.y = 1;// * vars.map.t_s;
 	prnt("mlx mouse hook\n");
 	mlx_mouse_hook(vars.win, mouse_hook, &vars);
 	prnt("mlx key hook\n");

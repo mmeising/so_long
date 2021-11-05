@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:03:17 by mmeising          #+#    #+#             */
-/*   Updated: 2021/10/26 22:17:31 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/04 20:57:57 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_change_color_rainbow(int *color)
 	unsigned int	b;
 	int				steps;
 
-	steps = 1;
+	steps = 17;
 	t = get_t(*color);
 	r = get_r(*color);
 	g = get_g(*color);

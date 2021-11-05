@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 22:31:07 by mmeising          #+#    #+#             */
-/*   Updated: 2021/10/25 23:05:32 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/04 20:26:10 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	mouse_hook(int button, int x, int y, t_vars *vars)
 {
 	(void)button;
-	ft_put_circle(150, vars->img, ft_change_color_rainbow(&vars->color),
+	ft_put_circle(150, vars, ft_change_color_rainbow(&vars->color),
 		ft_set_coords(x, y));
 	return (-1);
 }

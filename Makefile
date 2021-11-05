@@ -6,36 +6,84 @@
 #    By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 19:18:37 by mmeising          #+#    #+#              #
-#    Updated: 2021/10/26 22:13:03 by mmeising         ###   ########.fr        #
+#    Updated: 2021/11/05 01:40:03 by mmeising         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := so_long
+
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
-SRCS := so_long.c create_get_trgb.c put_circle.c mouse_move.c mouse_click.c \
-		color_manipulation.c key_hooks.c player_on_screen.c wall.c tst.c
+
+SRCS := so_long.c create_get_trgb.c put_circle.c mouse_click.c \
+		color_manipulation.c key_hooks.c player_on_screen.c wall.c tst.c \
+		map_input.c
+
 SRCS := $(SRCS:%=src/%)
 OBJ := $(SRCS:src/%.c=obj/%.o)
-HEADERFILES := src/keys.h src/so_long.h
+
+LIBFT_NAME := ./libft/lib/libft.a
+MLX_NAME := ./mlx/libmlx.a
+
+HEADER := ./header/
+LIBFT_HEADER := ./libft/header/
+MLX_HEADER := ./mlx/
+
+MLX_FLAGS := -L ./mlx/ -lmlx -framework OpenGL -framework AppKit
+
+HEADER_FLAGS := -I $(HEADER) -I $(LIBFT_HEADER) -I $(MLX_HEADER)
+HEADER_FILES := $(HEADER)keys.h $(HEADER)so_long.h
+
+Y = "\033[33m"
+R = "\033[31m"
+G = "\033[32m"
+B = "\033[34m"
+X = "\033[0m"
+UP = "\033[A"
+CUT = "\033[K"
 
 all: $(NAME)
 
-obj/%.o: src/%.c $(HEADERFILES)
+
+$(NAME): $(OBJ) $(LIBFT_NAME) $(MLX_NAME)
+	$(CC) $(CFLAGS) $(HEADER_FLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT_NAME) $(MLX_NAME) -o $(NAME)
+
+$(LIBFT_NAME):
+	@echo Compiling libft
+	@make -C ./libft/
+	@printf $(UP)$(CUT)
+	@echo Finished compiling mlx
+
+$(MLX_NAME):
+	@echo Compiling mlx
+	@make -C ./mlx/
+	@printf $(UP)$(CUT)
+	@echo Finished compiling mlx
+
+obj/%.o: src/%.c $(HEADER_FILES)
+	@echo Compiling $@
 	@mkdir -p $(dir $@)
 	@mkdir -p $(dir $<)
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
-
-$(NAME): $(OBJ)
-	$(CC) -Lmlx -lmlx -framework OpenGL -framework AppKit $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(HEADER_FLAGS) -Imlx -c $< -o $@
+	@printf $(UP)$(CUT)
+	@echo Finished compiling $@
+	@printf $(UP)$(CUT)
 
 run: all
 	./so_long
 
 clean:
-	rm -f $(OBJ)
+	@echo Cleaning...
+	@rm -rf obj/
+	@printf $(UP)$(CUT)
+	@echo Cleaned!
 
 fclean: clean
-	rm -f $(NAME)
+	@echo Cleaning...
+	@rm -f $(NAME)
+	@printf $(UP)$(CUT)
+	@echo Cleaned!
 
 re: fclean all
+
+.PHONY: all clean fclean re
