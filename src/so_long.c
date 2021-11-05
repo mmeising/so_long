@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/05 01:37:50 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:50:18 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	prnt("my mlx pixel put\n");
 	char	*dst;
 
+	prnt("my mlx pixel put\n");
 	if (x >= 0 && x <= 1920 && y >= 0 && y <= 1080)
 	{
 		dst = data->addr + (y * data->line_length
@@ -49,7 +49,6 @@ int	render_next_frame(t_vars *vars)
 			&vars->img->line_length, &vars->img->endian);
 	put_player_on_screen(vars);
 	put_walls_on_screen(vars);
-	// ft_background_circles(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	return (0);
 }
@@ -74,8 +73,8 @@ int	main(void)
 	prnt("get data addr\n");
 	vars.img->addr = mlx_get_data_addr(vars.img->img, &vars.img->bpp,
 			&vars.img->line_length, &vars.img->endian);
-	vars.player_pos.x = 1;// * vars.map.t_s;
-	vars.player_pos.y = 1;// * vars.map.t_s;
+	vars.player_pos.x = 1;
+	vars.player_pos.y = 1;
 	prnt("mlx mouse hook\n");
 	mlx_mouse_hook(vars.win, mouse_hook, &vars);
 	prnt("mlx key hook\n");

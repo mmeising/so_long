@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 23:32:52 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/04 23:54:48 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:48:45 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // int	ft_is_movable(int keycode, t_vars *vars)
 // {
-	
+
 // }
 
 /*

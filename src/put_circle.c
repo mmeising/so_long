@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 19:33:00 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/04 21:30:35 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:50:06 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
  */
 void	ft_put_circle(int r, t_vars *vars, unsigned int color, t_coords middle)
 {
-	prnt("put circle\n");
 	int			d;
 	t_coords	outer;
 
+	prnt("put circle\n");
 	d = -r;
 	outer.x = r;
 	outer.y = 0;
@@ -68,9 +68,9 @@ void	ft_put_circle(int r, t_vars *vars, unsigned int color, t_coords middle)
 
 t_coords	ft_set_coords( int x, int y)
 {
-	prnt("set coords\n");
 	t_coords	coords;
 
+	prnt("set coords\n");
 	coords.x = x;
 	coords.y = y;
 	return (coords);

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:41:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/05 01:35:42 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:49:03 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ static int	is_valid(t_map *map)
 	char	*temp;
 	char	*line;
 	int		read_flag;
-	int		i = 0;
+	int		i;
 
+	i = 0;
 	fd = open(map->path, O_RDONLY);
 	line = get_next_line(fd);
 	printf("%i?\n", fd);

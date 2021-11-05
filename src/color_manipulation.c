@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:03:17 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/04 20:57:57 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 01:48:29 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ unsigned int	get_opposite(unsigned int color)
  */
 int	ft_change_color_rainbow(int *color)
 {
-	prnt("change color rainbow\n");
 	unsigned int	t;
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
 	int				steps;
 
+	prnt("change color rainbow\n");
 	steps = 17;
 	t = get_t(*color);
 	r = get_r(*color);
@@ -77,11 +77,3 @@ int	ft_change_color_rainbow(int *color)
 	*color = create_trgb(t, r, g, b);
 	return (*color);
 }
-// int	main(void)
-// {
-// 	unsigned int	trgb;
-
-// 	trgb = get_opposite((unsigned int)0x00B2EEFF);
-// 	printf("%u trgb\n", trgb);
-// 	return (0);
-// }
