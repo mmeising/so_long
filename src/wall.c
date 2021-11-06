@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:28:41 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/05 01:51:02 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 19:04:40 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@ void	put_walls_on_screen(t_vars *vars)
 	x = 0;
 	y = 0;
 	(void)vars;
-	while (x < 5)
+	while (x < 3)
 	{
 		put_wall(vars, x, 0);
 		x++;
 	}
 	x = 0;
-	while (y < 5)
+	while (y < 3)
 	{
 		put_wall(vars, 0, y);
 		y++;
 	}
-	put_wall(vars, 2, 1);
-	put_wall(vars, 2, 2);
-	put_wall(vars, 1, 2);
+	// put_wall(vars, 2, 1);
+	// put_wall(vars, 2, 2);
+	// put_wall(vars, 1, 2);
 }

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 19:33:00 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/05 01:50:06 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/05 20:09:17 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
  *	puts circle with radius r and color color with center at middle.
  *	use ft_set_coords(x, y) as last argument to set center.
  */
-void	ft_put_circle(int r, t_vars *vars, unsigned int color, t_coords middle)
+void	ft_put_circle(int r, t_data *img, unsigned int color, t_coords middle)
 {
 	int			d;
 	t_coords	outer;
@@ -55,7 +55,7 @@ void	ft_put_circle(int r, t_vars *vars, unsigned int color, t_coords middle)
 	// middle.y += vars->map.t_s / 2;
 	while (outer.y <= outer.x)
 	{
-		ft_put_symmetric_circle(vars->img, outer, color, middle);
+		ft_put_symmetric_circle(img, outer, color, middle);
 		d = d + 2 * outer.y + 1;
 		outer.y = outer.y + 1;
 		if (d > 0)
