@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/06 16:10:56 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/07 16:45:48 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include "mlx.h"
 # include "keys.h"
 # include "libft.h"
+
+# define EXIT_2D_ARRAY 2//failed saving map in 2d array
+# define EXIT_RECT 3//map not rectangular
+# define EXIT_NOT_WALLED 4//map not walled on all edges
+# define EXIT_INVALID_CHAR 5//map uses invalid chars (not 10PEC)
+# define EXIT_MAP_TOO_SMALL 6//map is so too small to have P, E and C
 
 /*
  *	image struct
@@ -41,14 +47,17 @@ typedef struct s_coords
 	int	y;
 }	t_coords;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char	*path;
 	char	**map;
 	int		color;
-	int		size_x;
-	int		size_y;
-	int		t_s;//example: = 64
+	size_t	sz_x;
+	size_t	sz_y;
+	size_t	count_p;
+	size_t	count_e;
+	size_t	count_c;
+	int		t_s;
 }	t_map;
 
 typedef struct s_vars
@@ -93,13 +102,14 @@ int				key_hook(int keycode, t_vars *vars);
 int				ft_close(int keycode, t_vars *vars);
 
 /*	CIRCLE STUFF==============================================================*/
-void	ft_put_circle(int r, t_data *img, unsigned int color, t_coords middle);
+void			ft_put_circle(int r, t_data *img, unsigned int color,
+					t_coords middle);
 void			ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
 					t_coords middle);
 t_coords		ft_set_coords( int x, int y);
 
 t_map			*check_map(char *path);
 
-void	prnt(char *str);
+void			prnt(char *str);
 
 #endif

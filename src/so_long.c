@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/06 16:10:08 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/07 13:50:54 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	render_next_frame(t_vars *vars)
 			&vars->img->line_length, &vars->img->endian);
 	put_player_on_screen(vars);
 	put_walls_on_screen(vars);
-	// mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 300);
+	// mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	return (0);
 }
 
@@ -66,7 +66,7 @@ int	render_next_frame(t_vars *vars)
 // 	vars.img = malloc(sizeof(*(vars.img)));
 // 	if (vars.img == NULL)
 // 		return (0);
-// 	vars.map->t_s = 51;
+// 	vars.map->t_s = 351;
 // 	vars.color = 0x00FF0000;
 // 	prnt("new image\n");
 // 	vars.img->img = mlx_new_image(vars.mlx, 1920, 1080);
