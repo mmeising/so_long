@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/07 16:45:48 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:47:42 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define EXIT_NOT_WALLED 4//map not walled on all edges
 # define EXIT_INVALID_CHAR 5//map uses invalid chars (not 10PEC)
 # define EXIT_MAP_TOO_SMALL 6//map is so too small to have P, E and C
+# define EXIT_NO_PEC 7//not at least one p, e and c
 
 /*
  *	image struct
@@ -47,16 +48,26 @@ typedef struct s_coords
 	int	y;
 }	t_coords;
 
+typedef struct s_poslist
+{
+	t_coords			pos;
+	struct s_poslist	*next;
+}	t_poslist;
+
 typedef struct s_map
 {
-	char	*path;
-	char	**map;
-	int		color;
-	size_t	sz_x;
-	size_t	sz_y;
-	size_t	count_p;
-	size_t	count_e;
-	size_t	count_c;
+	char		*path;
+	char		**map;
+	int			color;
+	size_t		sz_x;
+	size_t		sz_y;
+	size_t		count_p;
+	size_t		count_e;
+	size_t		count_c;
+	t_poslist	*list_p;
+	t_poslist	*list_e;
+	t_poslist	*list_c;
+	t_poslist	*list_1;
 	int		t_s;
 }	t_map;
 
@@ -73,7 +84,16 @@ typedef struct s_vars
 	int			color;
 }	t_vars;
 
+/*	MAP STUFF=================================================================*/
+
+void			is_pec1(t_map *map, size_t x, size_t y);
+
+/*	UTILITIES=================================================================*/
+
+int				error(int err_code);
+
 /*	COLOR MANIPULATION========================================================*/
+
 int				ft_change_color_rainbow(int *color);
 
 unsigned int	create_trgb(unsigned int t, unsigned int r,
@@ -86,22 +106,27 @@ unsigned int	get_b(unsigned int trgb);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*	PLAYER STUFF==============================================================*/
+
 void			put_player_on_screen(t_vars *vars);
 
 /*	BACKGROUND STUFF==========================================================*/
+
 void			ft_background_circles(t_vars *vars);
 
 void			put_walls_on_screen(t_vars *vars);
 
 /*	MOUSE STUFF===============================================================*/
+
 int				mouse_hook(int button, int x, int y, t_vars *vars);//mouseclick
 int				mouse_move(int x, int y, t_vars *vars);
 
 /*	KEY STUFF=================================================================*/
+
 int				key_hook(int keycode, t_vars *vars);
 int				ft_close(int keycode, t_vars *vars);
 
 /*	CIRCLE STUFF==============================================================*/
+
 void			ft_put_circle(int r, t_data *img, unsigned int color,
 					t_coords middle);
 void			ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
