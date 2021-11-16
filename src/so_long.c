@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/07 13:50:54 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/16 21:40:00 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	render_next_frame(t_vars *vars)
 	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bpp,
 			&vars->img->line_length, &vars->img->endian);
 	put_player_on_screen(vars);
-	put_walls_on_screen(vars);
+	// put_walls_on_screen(vars);
 	// mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	return (0);
 }
@@ -131,26 +131,31 @@ void	create_player(t_vars *vars)
 // main for testing transparent player
 int	main(void)
 {
-	t_vars	vars;
+	t_vars	*vars;
 
-	vars.map = check_map("maps/map1.ber");
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "transparent player");
-	vars.img = malloc(sizeof(*(vars.img)));
-	vars.player_img = malloc(sizeof(*(vars.player_img)));
-	if (vars.img == NULL || vars.player_img == NULL)
+	vars = malloc(sizeof(vars));
+	if (vars == NULL)
+		return (1);
+	vars->map = check_map("maps/map1.ber");
+	vars->mlx = mlx_init();
+	vars->win = mlx_new_window(vars->mlx, vars->map->t_s * vars->map->sz_x,
+			vars->map->t_s * vars->map->sz_y, "so_long");
+	vars->background = create_backgrounds(vars);
+	vars->img = malloc(sizeof(*(vars->img)));
+	vars->player_img = malloc(sizeof(*(vars->player_img)));
+	if (vars->img == NULL || vars->player_img == NULL)
 		return (0);
-	vars.img->img = mlx_new_image(vars.mlx, 51, 51);
-	vars.img->addr = mlx_get_data_addr(vars.img->img, &vars.img->bpp,
-			&vars.img->line_length, &vars.img->endian);
-	vars.player_img->img = mlx_new_image(vars.mlx, 51, 51);
-	vars.player_img->addr = mlx_get_data_addr(vars.player_img->img, &vars.player_img->bpp, &vars.player_img->line_length,
-			&vars.player_img->endian);
-	fill_square(&vars);
-	create_player(&vars);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.img->img, 0, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.img->img, 120, 120);
-	mlx_put_image_to_window(vars.mlx, vars.win, vars.player_img->img, 0, 0);
-	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
-	mlx_loop(vars.mlx);
+	vars->img->img = mlx_new_image(vars->mlx, 51, 51);
+	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bpp,
+			&vars->img->line_length, &vars->img->endian);
+	vars->player_img->img = mlx_new_image(vars->mlx, 51, 51);
+	vars->player_img->addr = mlx_get_data_addr(vars->player_img->img, &vars->player_img->bpp, &vars->player_img->line_length,
+			&vars->player_img->endian);
+	fill_square(vars);
+	create_player(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 120, 120);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->player_img->img, 0, 0);
+	mlx_loop_hook(vars->mlx, render_next_frame, vars);
+	mlx_loop(vars->mlx);
 }

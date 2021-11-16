@@ -15,8 +15,11 @@ To do:
 	by 2 if tile_size * tiles_in_x > 1920(?) or tile_size * tiles_in_y > 1080(?)
 	and calls itself, otherwise returns
 
-4.	create a linked list of coordinate pairs where the walls are
-	and set player position in struct
+4.	create linked lists of coordinate pairs where the walls, player positions,
+	exits and collectibles are. Set one player position inside map struct
+	EDIT: no more linked list, for every new frame just go through the 2d array
+	and put 1, P, E, C at the positions where they are. ignore 0 as new image
+	will have it blacked out anyway
 
 5.	create 90(?) images of tile_size * tile_size, each fully colored in an RGB 
 	setting 17(?) steps from last (change_color_rainbow function)

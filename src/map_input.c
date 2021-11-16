@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:41:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/08 18:46:31 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/16 19:04:42 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	**save_in_2d_array(t_map *map)
 	fd = open(map->path, O_RDONLY);
 	line = get_next_line(fd);
 	if (line == NULL)
-		exit(0);
+		exit(EXIT_2D_ARRAY);
 	while (1)
 	{
 		temp = get_next_line(fd);
@@ -32,7 +32,7 @@ static char	**save_in_2d_array(t_map *map)
 	return (ft_split(line, '\n'));
 }
 
-static void	is_rectangle(t_map *map)
+static void	is_rectangle_and_big_enough(t_map *map)
 {
 	map->sz_x = ft_strlen(map->map[0]);
 	while (map->map[map->sz_y])
@@ -101,21 +101,14 @@ t_map	*check_map(char *path)
 	map = malloc(sizeof(*map));
 	if (map == NULL)
 		return (NULL);
-	map->sz_y = 0;
-	map->count_p = 0;
-	map->count_e = 0;
-	map->count_c = 0;
-	map->list_p = NULL;
-	map->list_e = NULL;
-	map->list_c = NULL;
-	map->list_1 = NULL;
-	map->path = path;
+	init_map_values(map, path);
 	map->map = save_in_2d_array(map);
 	if (map->map == NULL)
 		exit(error(EXIT_2D_ARRAY));
-	is_rectangle(map);
+	is_rectangle_and_big_enough(map);
 	is_walled_and_valid_chars(map);
 	check_and_list_pec1(map);
+	set_tile_size(map);
 	// printf("outside: wall: x:%d y: %d\n", map->list_1->pos.x, map->list_1->pos.y);
 	// while (map->list_1->next)
 	// {
@@ -123,6 +116,26 @@ t_map	*check_map(char *path)
 	// 		printf("wall: x:%d y: %d\n", map->list_1->pos.x, map->list_1->pos.y);
 	// 	map->list_1 = map->list_1->next;
 	// }
-	exit(0);
+	while (map->list_1)
+	{
+		printf("wall: x: %i\t\ty: %i\n", map->list_1->pos.x, map->list_1->pos.y);
+		map->list_1 = map->list_1->next;
+	}
+	while (map->list_c)
+	{
+		printf("p: x: %i\t\ty: %i\n", map->list_c->pos.x, map->list_c->pos.y);
+		map->list_c = map->list_c->next;
+	}
+	while (map->list_e)
+	{
+		printf("e: x: %i\t\ty: %i\n", map->list_e->pos.x, map->list_e->pos.y);
+		map->list_e = map->list_e->next;
+	}
+	while (map->list_p)
+	{
+		printf("p: x: %i\t\ty: %i\n",map->list_p->pos.x, map->list_p->pos.y);
+		map->list_p = map->list_p->next;
+	}
+	// exit(0);
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/08 18:47:42 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/16 22:28:45 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define EXIT_INVALID_CHAR 5//map uses invalid chars (not 10PEC)
 # define EXIT_MAP_TOO_SMALL 6//map is so too small to have P, E and C
 # define EXIT_NO_PEC 7//not at least one p, e and c
+# define EXIT_MAP_TOO_BIG 8//map is too big, tile size would be too small
+# define EXIT_MALLOC_FAILED 9//malloc returned NULL
 
 /*
  *	image struct
@@ -41,6 +43,13 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }	t_data;
+
+typedef struct s_data_list
+{
+	t_data				*img;
+	struct s_data_list	*next;
+}	t_data_list;
+
 
 typedef struct s_coords
 {
@@ -68,7 +77,7 @@ typedef struct s_map
 	t_poslist	*list_e;
 	t_poslist	*list_c;
 	t_poslist	*list_1;
-	int		t_s;
+	int			t_s;
 }	t_map;
 
 typedef struct s_vars
@@ -76,6 +85,7 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_data		*img;
+	t_data_list	*colors;
 	t_data		*player_img;
 	t_map		*map;
 	t_coords	player_pos;
@@ -87,10 +97,16 @@ typedef struct s_vars
 /*	MAP STUFF=================================================================*/
 
 void			is_pec1(t_map *map, size_t x, size_t y);
+void			init_map_values(t_map *map, char *path);
+void			set_tile_size(t_map *map);
 
 /*	UTILITIES=================================================================*/
 
 int				error(int err_code);
+
+/*	LIST STUFF================================================================*/
+
+t_data_list		*lstnew(t_coords *img);
 
 /*	COLOR MANIPULATION========================================================*/
 
@@ -111,9 +127,9 @@ void			put_player_on_screen(t_vars *vars);
 
 /*	BACKGROUND STUFF==========================================================*/
 
-void			ft_background_circles(t_vars *vars);
-
-void			put_walls_on_screen(t_vars *vars);
+t_data_list		*create_background(t_vars *vars);
+// void			ft_background_circles(t_vars *vars);
+// void			put_walls_on_screen(t_vars *vars);
 
 /*	MOUSE STUFF===============================================================*/
 
