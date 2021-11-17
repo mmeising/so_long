@@ -2,6 +2,14 @@
 Simple 2D game where the player can collect things and
 needs to leave through the exit.
 
+right now working on:
+creating all needed colors for player and collectible in a list,
+creating color for exit (green?) and walls (red?)
+
+colors pointer = colors->next at end of render_next_frame, maybe even
+only at certain counts to slow it down (count inside struct?)
+
+
 
 To do:
 

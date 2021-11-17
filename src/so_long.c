@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/16 21:40:00 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 19:11:19 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int	main(void)
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, vars->map->t_s * vars->map->sz_x,
 			vars->map->t_s * vars->map->sz_y, "so_long");
-	vars->background = create_backgrounds(vars);
+	create_images(vars);
 	vars->img = malloc(sizeof(*(vars->img)));
 	vars->player_img = malloc(sizeof(*(vars->player_img)));
 	if (vars->img == NULL || vars->player_img == NULL)

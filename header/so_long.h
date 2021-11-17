@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/16 22:28:45 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 18:39:58 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_data		*img;
+	t_data		*red;
+	t_data		*green;
+	t_data		*player;
+	t_data		*coll;
+	t_data		*ex;
+	t_data		*wall;
 	t_data_list	*colors;
 	t_data		*player_img;
 	t_map		*map;
@@ -96,7 +102,7 @@ typedef struct s_vars
 
 /*	MAP STUFF=================================================================*/
 
-void			is_pec1(t_map *map, size_t x, size_t y);
+void			is_pec(t_map *map, size_t x, size_t y);
 void			init_map_values(t_map *map, char *path);
 void			set_tile_size(t_map *map);
 
@@ -106,12 +112,13 @@ int				error(int err_code);
 
 /*	LIST STUFF================================================================*/
 
-t_data_list		*lstnew(t_coords *img);
+t_data_list		*lstnew(t_data *img);
 
 /*	COLOR MANIPULATION========================================================*/
 
-int				ft_change_color_rainbow(int *color);
+void			create_images(t_vars *vars);
 
+int				ft_change_color_rainbow(int *color);
 unsigned int	create_trgb(unsigned int t, unsigned int r,
 					unsigned int g, unsigned int b);
 unsigned int	get_t(unsigned int trgb);

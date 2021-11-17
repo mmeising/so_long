@@ -6,7 +6,7 @@
 #    By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 19:18:37 by mmeising          #+#    #+#              #
-#    Updated: 2021/11/16 21:44:31 by mmeising         ###   ########.fr        #
+#    Updated: 2021/11/17 18:34:34 by mmeising         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS := -Wall -Wextra -Werror
 SRCS := so_long.c create_get_trgb.c put_circle.c mouse_click.c \
 		color_manipulation.c key_hooks.c player_on_screen.c wall.c tst.c \
 		map_input.c error.c map_init_and_count.c map_tile_size.c list.c \
-		create_colors.c
+		img_create.c
 
 SRCS := $(SRCS:%=src/%)
 OBJ := $(SRCS:src/%.c=obj/%.o)
