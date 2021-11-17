@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:01:25 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/07 17:10:19 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 19:29:18 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	put_player_on_screen(t_vars *vars)
 	ts = vars->map->t_s;
 	r = ts / 2;
 	ft_put_circle(r - i, vars->img, ft_change_color_rainbow(&vars->color),
-		ft_set_coords(vars->player_pos.x + r + i, vars->player_pos.y + r + i));
+		set_coords(vars->player_pos.x + r + i, vars->player_pos.y + r + i));
 	// while (i < r)
 	// {
 	// 	if ((r - i) % 2 == 0)
 	// 	{
 	// 		ft_put_circle(r - i, vars->img, vars->color,
-	// 			ft_set_coords(vars->player_pos.x + i, vars->player_pos.y + i));
+	// 			set_coords(vars->player_pos.x + i, vars->player_pos.y + i));
 	// 	}
 	// 	if (i % r == 0)
 	// 		ft_change_color_rainbow(&vars->color);

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:20:27 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/16 19:04:03 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 20:55:19 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,5 @@ void	set_tile_size(t_map *map)
 	map->t_s = 101;
 	recursive_t_s(map);
 	printf("final tile_size: %i\n", map->t_s);
-	printf("tile_size * x: %lu\ntile_size * y: %lu\n", map->t_s * map->sz_x, map->t_s * map->sz_y);
-	exit(0);//exit
+	// exit(0);//exit
 }

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 19:33:00 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/05 20:09:17 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 19:28:32 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
 
 /*
  *	puts circle with radius r and color color with center at middle.
- *	use ft_set_coords(x, y) as last argument to set center.
+ *	use set_coords(x, y) as last argument to set center.
  */
 void	ft_put_circle(int r, t_data *img, unsigned int color, t_coords middle)
 {
@@ -66,7 +66,7 @@ void	ft_put_circle(int r, t_data *img, unsigned int color, t_coords middle)
 	}
 }
 
-t_coords	ft_set_coords( int x, int y)
+t_coords	set_coords( int x, int y)
 {
 	t_coords	coords;
 
@@ -91,9 +91,9 @@ int	main(void)
 	img.addr = mlx_get_data_addr(img.img, &img.bpp,
 			&img.line_length, &img.endian);//basically initialize that image?
 	color = 0x00FF0000;
-	ft_put_circle(300, &img, color, ft_set_coords(1000, 400));//choose to 
+	ft_put_circle(300, &img, color, set_coords(1000, 400));//choose to 
 											//create this circle on the image
-	ft_put_circle(100, &img, 0x0000FF00, ft_set_coords(1100, 500));//another 
+	ft_put_circle(100, &img, 0x0000FF00, set_coords(1100, 500));//another 
 													//circle on same image
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);//now putting this 
 								//whole image to our window - updating the frame

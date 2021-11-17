@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:41:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/17 19:08:54 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 19:36:01 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	**save_in_2d_array(t_map *map)
 	fd = open(map->path, O_RDONLY);
 	line = get_next_line(fd);
 	if (line == NULL)
-		exit(EXIT_2D_ARRAY);
+		exit(error(EXIT_2D_ARRAY));
 	while (1)
 	{
 		temp = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/17 18:39:58 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/17 21:10:45 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@
 # define EXIT_NO_PEC 7//not at least one p, e and c
 # define EXIT_MAP_TOO_BIG 8//map is too big, tile size would be too small
 # define EXIT_MALLOC_FAILED 9//malloc returned NULL
+
+# define RED 0x00FF0000
+# define GREEN 0x00FF00
+# define TRANSP 0xFF000000
 
 /*
  *	image struct
@@ -73,10 +77,6 @@ typedef struct s_map
 	size_t		count_p;
 	size_t		count_e;
 	size_t		count_c;
-	t_poslist	*list_p;
-	t_poslist	*list_e;
-	t_poslist	*list_c;
-	t_poslist	*list_1;
 	int			t_s;
 }	t_map;
 
@@ -92,7 +92,6 @@ typedef struct s_vars
 	t_data		*ex;
 	t_data		*wall;
 	t_data_list	*colors;
-	t_data		*player_img;
 	t_map		*map;
 	t_coords	player_pos;
 	t_coords	coords;
@@ -116,7 +115,8 @@ t_data_list		*lstnew(t_data *img);
 
 /*	COLOR MANIPULATION========================================================*/
 
-void			create_images(t_vars *vars);
+void			create_images(t_vars *vars, int ts);
+void			fill_images(t_vars *vars, int t_s);
 
 int				ft_change_color_rainbow(int *color);
 unsigned int	create_trgb(unsigned int t, unsigned int r,
@@ -154,7 +154,7 @@ void			ft_put_circle(int r, t_data *img, unsigned int color,
 					t_coords middle);
 void			ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
 					t_coords middle);
-t_coords		ft_set_coords( int x, int y);
+t_coords		set_coords( int x, int y);
 
 t_map			*check_map(char *path);
 
