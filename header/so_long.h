@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/17 21:10:45 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/18 21:57:53 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_map
 	size_t		count_e;
 	size_t		count_c;
 	int			t_s;
+	t_coords	p_pos;
 }	t_map;
 
 typedef struct s_vars
@@ -93,9 +94,6 @@ typedef struct s_vars
 	t_data		*wall;
 	t_data_list	*colors;
 	t_map		*map;
-	t_coords	player_pos;
-	t_coords	coords;
-	t_coords	mouse_pos;
 	int			color;
 }	t_vars;
 
