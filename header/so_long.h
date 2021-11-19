@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/18 21:57:53 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 03:28:27 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define EXIT_NO_PEC 7//not at least one p, e and c
 # define EXIT_MAP_TOO_BIG 8//map is too big, tile size would be too small
 # define EXIT_MALLOC_FAILED 9//malloc returned NULL
+# define EXIT_TOO_MANY_P 10//more than one player pos is invalid
 
 # define RED 0x00FF0000
 # define GREEN 0x00FF00
@@ -61,17 +62,10 @@ typedef struct s_coords
 	int	y;
 }	t_coords;
 
-typedef struct s_poslist
-{
-	t_coords			pos;
-	struct s_poslist	*next;
-}	t_poslist;
-
 typedef struct s_map
 {
 	char		*path;
 	char		**map;
-	int			color;
 	size_t		sz_x;
 	size_t		sz_y;
 	size_t		count_p;
@@ -85,7 +79,7 @@ typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
-	t_data		*img;
+	t_data		*blck;
 	t_data		*red;
 	t_data		*green;
 	t_data		*player;
@@ -95,6 +89,7 @@ typedef struct s_vars
 	t_data_list	*colors;
 	t_map		*map;
 	int			color;
+	int			steps;
 }	t_vars;
 
 /*	MAP STUFF=================================================================*/
@@ -102,19 +97,30 @@ typedef struct s_vars
 void			is_pec(t_map *map, size_t x, size_t y);
 void			init_map_values(t_map *map, char *path);
 void			set_tile_size(t_map *map);
+t_map			*check_map(char *path);
 
 /*	UTILITIES=================================================================*/
 
 int				error(int err_code);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_coords		set_coords( int x, int y);
 
 /*	LIST STUFF================================================================*/
 
 t_data_list		*lstnew(t_data *img);
 
-/*	COLOR MANIPULATION========================================================*/
+/*	IMAGE STUFF===============================================================*/
 
 void			create_images(t_vars *vars, int ts);
+void			create_wall(t_data *wall, int color, int ts);
+void			create_player(t_data *player, int color, int ts);
+void			create_exit(t_data *ex, int color, int ts);
+void			create_coll(t_data *coll, int color, int ts);
 void			fill_images(t_vars *vars, int t_s);
+void			init_images(t_vars *vars, int ts);
+t_data_list		*colors_circular_linked_list(t_vars *vars, int color, int ts);
+
+/*	COLOR MANIPULATION========================================================*/
 
 int				ft_change_color_rainbow(int *color);
 unsigned int	create_trgb(unsigned int t, unsigned int r,
@@ -128,18 +134,13 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*	PLAYER STUFF==============================================================*/
 
-void			put_player_on_screen(t_vars *vars);
+void	put_player_to_img(t_vars *vars);
 
 /*	BACKGROUND STUFF==========================================================*/
 
 t_data_list		*create_background(t_vars *vars);
 // void			ft_background_circles(t_vars *vars);
 // void			put_walls_on_screen(t_vars *vars);
-
-/*	MOUSE STUFF===============================================================*/
-
-int				mouse_hook(int button, int x, int y, t_vars *vars);//mouseclick
-int				mouse_move(int x, int y, t_vars *vars);
 
 /*	KEY STUFF=================================================================*/
 
@@ -150,11 +151,6 @@ int				ft_close(int keycode, t_vars *vars);
 
 void			ft_put_circle(int r, t_data *img, unsigned int color,
 					t_coords middle);
-void			ft_put_symmetric_circle(t_data *img, t_coords outer, int color,
-					t_coords middle);
-t_coords		set_coords( int x, int y);
-
-t_map			*check_map(char *path);
 
 void			prnt(char *str);
 

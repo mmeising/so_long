@@ -9,7 +9,10 @@ creating color for exit (green?) and walls (red?)
 colors pointer = colors->next at end of render_next_frame, maybe even
 only at certain counts to slow it down (count inside struct?)
 
+exit red until all collectibles are found, then green or colorshift
 
+# list of images in img_create
+# create exit and coll in img_fill
 
 To do:
 

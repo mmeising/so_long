@@ -6,50 +6,72 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/17 22:34:42 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 04:15:17 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	// prnt("my mlx pixel put\n");
-	if (x >= 0 && x <= 1920 && y >= 0 && y <= 1080)
-	{
-		dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-		*(unsigned int *)dst = color;
-	}
-}
-
 int	ft_close(int keycode, t_vars *vars)
 {
-	prnt("close\n");
 	(void)vars;
 	(void)keycode;
 	exit(0);
 	return (0);
 }
 
+static void	put_tile(t_vars *vars, char c, int x, int y)
+{
+	if (c == '1')
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->red->img, x, y);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->wall->img, x, y);
+	}
+	else if (c == 'C')
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->green->img, x, y);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->coll->img, x, y);
+	}
+	else if (c == 'E')
+	{
+		if (vars->map->count_c > 0)
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->red->img, x, y);
+		else if (vars->map->count_c == 0)
+		{
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->green->img,
+					x, y);
+		}
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->ex->img, x, y);
+	}
+}
+
+static void	put_tiles_to_img(t_vars *vars)
+{
+	int	ts;
+	int	x;
+	int	y;
+
+	ts = vars->map->t_s;
+	y = 0;
+	while (vars->map->map[y])
+	{
+		x = 0;
+		while (vars->map->map[y][x])
+		{
+			put_tile(vars, vars->map->map[y][x], x * ts, y * ts);
+			x++;
+		}
+		y++;
+	}
+}
+
 int	render_next_frame(t_vars *vars)
 {
+	(void)vars;
 	prnt("render next frame\n");
-	if (vars->img->img)
-	{
-		prnt("mlx destroy image\n");
-		mlx_destroy_image(vars->mlx, vars->img->img);
-	}
-	prnt("mlx new image\n");
-	vars->img->img = mlx_new_image(vars->mlx, vars->map->t_s * vars->map->sz_x,
-			vars->map->t_s * vars->map->sz_y);
-	prnt("mlx get data addr\n");
-	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bpp,
-			&vars->img->line_length, &vars->img->endian);
-	// put_player_on_screen(vars);
-	// put_walls_on_screen(vars);
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->blck->img, 0, 0);
+	put_tiles_to_img(vars);
+	put_player_to_img(vars);
 	return (0);
 }
 
@@ -92,37 +114,27 @@ int	render_next_frame(t_vars *vars)
 //	save an array of (90?) images inside vars, make a function to set each to
 //	the background color after tile size is set.
 
-// main for testing transparent player
 int	main(void)
 {
 	t_vars	*vars;
-	int		ts;
-	int		xs;
-	int		ys;
-	// t_map	*temp_map;
 
-	vars = malloc(sizeof(vars));
+	vars = malloc(sizeof(*vars));
 	if (vars == NULL)
 		exit(error(EXIT_MALLOC_FAILED));
-	vars->map = check_map("maps/map1.ber");
-	ts = vars->map->t_s;
-	xs = vars->map->sz_x;
-	ys = vars->map->sz_y;
-	printf("map address 1: %p\n", vars->map);
+	vars->map = check_map("maps/map_xxl.ber");
 	vars->mlx = mlx_init();
-	printf("map address 2: %p\n", vars->map);
-	vars->win = mlx_new_window(vars->mlx, ts * xs,
-			ts * ys, "so_long");
-	printf("map address 3: %p\n", vars->map);
-	printf("testing map tilesize: %i\n", vars->map->t_s);
-	create_images(vars, ts);
-	exit(error(4));
-// 	vars->img = malloc(sizeof(*(vars->img)));
-// 	vars->img->img = mlx_new_image(vars->mlx, 51, 51);
-// 	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bpp,
-// 			&vars->img->line_length, &vars->img->endian);
-// 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
-// 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 120, 120);
-// 	mlx_loop_hook(vars->mlx, render_next_frame, vars);
-// 	mlx_loop(vars->mlx);
+	vars->win = mlx_new_window(vars->mlx, vars->map->t_s * vars->map->sz_x + 1,
+			vars->map->t_s * vars->map->sz_y, "so_long");
+	// vars->colors = colors_circular_linked_list(vars, RED, vars->map->t_s);
+	init_images(vars, vars->map->t_s);
+	fill_images(vars, vars->map->t_s);
+	vars->steps = 0;
+	
+	put_tiles_to_img(vars);
+	put_player_to_img(vars);
+
+	mlx_loop_hook(vars->mlx, render_next_frame, vars);
+	mlx_key_hook(vars->win, key_hook, vars);
+	mlx_hook(vars->win, 17, 1L << 17, ft_close, &vars);
+	mlx_loop(vars->mlx);
 }

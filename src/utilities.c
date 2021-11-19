@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_tile_size.c                                    :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:20:27 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 04:13:55 by mmeising         ###   ########.fr       */
+/*   Created: 2021/11/19 01:25:08 by mmeising          #+#    #+#             */
+/*   Updated: 2021/11/19 01:26:10 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	recursive_t_s(t_map *map)
+t_coords	set_coords( int x, int y)
 {
-	if (map->sz_x * map->t_s > 1920)
-	{
-		map->t_s -= 2;
-		recursive_t_s(map);
-	}
-	else if (map->sz_y * map->t_s > 1080)
-	{
-		map->t_s -= 2;
-		recursive_t_s(map);
-	}
-	else if (map->t_s < 15)
-	{
-		printf("tile size would be: %i\n", map->t_s);
-		exit(error(EXIT_MAP_TOO_BIG));
-	}
-	else
-		return ;
+	t_coords	coords;
+
+	coords.x = x;
+	coords.y = y;
+	return (coords);
 }
 
-void	set_tile_size(t_map *map)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	map->t_s = 101;
-	recursive_t_s(map);
+	char	*dst;
+
+	if (x >= 0 && x <= 1920 && y >= 0 && y <= 1080)
+	{
+		dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
+		*(unsigned int *)dst = color;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:41:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/17 19:36:01 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 01:03:58 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	check_pec(t_map *map)
 	}
 	if (!(map->count_p && map->count_e && map->count_c))
 		exit(error(EXIT_NO_PEC));
+	if (map->count_p > 1)
+		exit(error(EXIT_TOO_MANY_P));
 }
 
 t_map	*check_map(char *path)

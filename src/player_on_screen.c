@@ -6,37 +6,23 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:01:25 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/17 19:29:18 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 02:48:40 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//	2 images. one is full tile size in one colour, set with memset.
-//	second image only gets created once in the beginning with tile size,
-//	is transparent on circle's pixels. print it over coloured image
-//	-> colored circle. 
-void	put_player_on_screen(t_vars *vars)
+void	put_player_to_img(t_vars *vars)
 {
-	int	i;
-	int	r;
 	int	ts;
+	int	x;
+	int	y;
 
-	prnt("put player on screen\n");
-	i = 4;
 	ts = vars->map->t_s;
-	r = ts / 2;
-	ft_put_circle(r - i, vars->img, ft_change_color_rainbow(&vars->color),
-		set_coords(vars->player_pos.x + r + i, vars->player_pos.y + r + i));
-	// while (i < r)
-	// {
-	// 	if ((r - i) % 2 == 0)
-	// 	{
-	// 		ft_put_circle(r - i, vars->img, vars->color,
-	// 			set_coords(vars->player_pos.x + i, vars->player_pos.y + i));
-	// 	}
-	// 	if (i % r == 0)
-	// 		ft_change_color_rainbow(&vars->color);
-	// 	i++;
-	// }
+	x = vars->map->p_pos.x;
+	y = vars->map->p_pos.y;
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->green->img,
+			x * ts, y * ts);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->player->img,
+			x * ts, y * ts);
 }

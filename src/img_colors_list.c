@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_tile_size.c                                    :+:      :+:    :+:   */
+/*   img_colors_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 17:20:27 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 04:13:55 by mmeising         ###   ########.fr       */
+/*   Created: 2021/11/19 03:24:54 by mmeising          #+#    #+#             */
+/*   Updated: 2021/11/19 03:36:28 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	recursive_t_s(t_map *map)
-{
-	if (map->sz_x * map->t_s > 1920)
-	{
-		map->t_s -= 2;
-		recursive_t_s(map);
-	}
-	else if (map->sz_y * map->t_s > 1080)
-	{
-		map->t_s -= 2;
-		recursive_t_s(map);
-	}
-	else if (map->t_s < 15)
-	{
-		printf("tile size would be: %i\n", map->t_s);
-		exit(error(EXIT_MAP_TOO_BIG));
-	}
-	else
-		return ;
-}
+// t_data_list *colors_circular_linked_list(t_vars *vars, int color, int ts)
+// {
+// 	t_data_list	*colors;
+// 	t_data_list	*temp;
+// 	int			i;
 
-void	set_tile_size(t_map *map)
-{
-	map->t_s = 101;
-	recursive_t_s(map);
-}
+// 	temp = colors;
+// 	vars->color = 0x00FF0000;
+// 	i = 0;
+// 	while (i < 90)
+// 	{
+// 		i++;
+// 	}
+
+// }
