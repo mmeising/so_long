@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 22:29:35 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 23:52:23 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ static void	put_tile(t_vars *vars, char c, int x, int y)
 {
 	if (c == '1')
 	{
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->colors_walls->img->img, x, y);
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->colors_walls->img->img, x, y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->wall->img, x, y);
 	}
 	else if (c == 'C')
 	{
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->colors->img->img, x, y);
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->colors->img->img, x, y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->coll->img, x, y);
 	}
 	else if (c == 'E')
@@ -94,12 +96,7 @@ int	main(int argc, char **argv)
 	vars->win = mlx_new_window(vars->mlx, vars->map->t_s * vars->map->sz_x + 1,
 			vars->map->t_s * vars->map->sz_y, "so_long");
 	vars->colors = colors_circular_linked_list(vars, vars->map->t_s);
-	init_images(vars, vars->map->t_s);
-	fill_images(vars, vars->map->t_s);
-	vars->steps = 0;
-	vars->slow = 0;
-	put_tiles_to_img(vars);
-	put_player_to_img(vars);
+	init_and_fill_images(vars, vars->map->t_s);
 	mlx_loop_hook(vars->mlx, render_next_frame, vars);
 	mlx_key_hook(vars->win, key_hook, vars);
 	mlx_hook(vars->win, 17, 1L << 17, ft_close, &vars);

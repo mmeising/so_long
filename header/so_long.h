@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 22:26:45 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 00:34:34 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ typedef struct s_map
 	size_t		count_c;
 	int			t_s;
 	t_coords	p_pos;
+	t_coords	enemy_p_0;
+	t_coords	enemy_p_1;
 }	t_map;
 
 typedef struct s_vars
@@ -86,6 +88,7 @@ typedef struct s_vars
 	t_data		*coll;
 	t_data		*ex;
 	t_data		*wall;
+	t_data		*enemy;
 	t_data_list	*colors;
 	t_data_list	*colors_walls;
 	t_map		*map;
@@ -121,8 +124,8 @@ void			create_player(t_data *player, int color, int ts);
 void			create_exit(t_data *ex, int color, int ts);
 void			create_coll(t_data *coll, int color, int ts);
 void			fill_square(t_data *square, int color, int ts);
-void			fill_images(t_vars *vars, int t_s);
-void			init_images(t_vars *vars, int ts);
+void			init_and_fill_images(t_vars *vars, int ts);
+void			init_images(t_vars *vars, int ts, int x, int y);
 t_data_list		*colors_circular_linked_list(t_vars *vars, int ts);
 
 /*	COLOR MANIPULATION========================================================*/
