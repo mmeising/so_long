@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 22:00:29 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:26:45 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_vars
 	t_data		*ex;
 	t_data		*wall;
 	t_data_list	*colors;
+	t_data_list	*colors_walls;
 	t_map		*map;
 	int			color;
 	int			steps;

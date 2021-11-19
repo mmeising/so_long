@@ -6,44 +6,11 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:03:17 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 21:36:40 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:08:01 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-**	returns color with added shade
-**	(distance = 0 -> no change; 1 -> dark; 0.5 -> halfway
-*/
-unsigned int	add_shade(double distance, unsigned int color)
-{
-	unsigned int	t;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
-
-	distance = 1 - distance;
-	t = get_t(color);
-	r = get_r(color) * distance;
-	g = get_g(color) * distance;
-	b = get_b(color) * distance;
-	return (create_trgb(t, r, g, b));
-}
-
-unsigned int	get_opposite(unsigned int color)
-{
-	unsigned int	t;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
-
-	t = get_t(color);
-	r = 255 - get_r(color);
-	g = 255 - get_g(color);
-	b = 255 - get_b(color);
-	return (create_trgb(t, r, g, b));
-}
 
 /*
  *	steps can be 1, 3, 5, 15, 17, 51, 85, 255

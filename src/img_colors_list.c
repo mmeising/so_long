@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 03:24:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 21:36:38 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:31:51 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_data_list	*colors_circular_linked_list(t_vars *vars, int ts)
 		img = set_img_to_square(vars, ts);
 		colors = lstadd_front(colors, img);
 		i++;
+		if (i == 45)
+			vars->colors_walls = colors;
 	}
 	last = lst_last(colors);
 	last->next = colors;

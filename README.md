@@ -2,14 +2,9 @@
 Simple 2D game where the player can collect things and
 needs to leave through the exit.
 
-right now working on:
-creating all needed colors for player and collectible in a list,
-creating color for exit (green?) and walls (red?)
-
-colors pointer = colors->next at end of render_next_frame, maybe even
-only at certain counts to slow it down (count inside struct?)
-
-exit red until all collectibles are found, then green or colorshift
+player and collectible radius modulo?
+map tile_size standard and maximum window size?
+so_long.c lines 100 and 101 needed?
 
 # list of images in img_create
 # create exit and coll in img_fill

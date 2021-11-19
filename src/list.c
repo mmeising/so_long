@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:10:46 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 22:02:43 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:18:59 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 t_data_list	*lst_last(t_data_list *lst)
 {
-	int	i = 0;
 	while (lst != NULL && lst->next != NULL)
-	{
-		printf("%i lst:\t\t%p\nlst->next:\t%p\n", i++, lst, lst->next);
 		lst = lst->next;
-	}
 	return (lst);
 }
 

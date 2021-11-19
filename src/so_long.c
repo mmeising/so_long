@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 22:00:09 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:29:35 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	put_tile(t_vars *vars, char c, int x, int y)
 {
 	if (c == '1')
 	{
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->red->img, x, y);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->colors_walls->img->img, x, y);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->wall->img, x, y);
 	}
 	else if (c == 'C')
@@ -73,6 +73,7 @@ int	render_next_frame(t_vars *vars)
 	vars->slow++;
 	if (vars->slow == 5)
 	{
+		vars->colors_walls = vars->colors_walls->next;
 		vars->colors = vars->colors->next;
 		vars->slow = 0;
 	}
