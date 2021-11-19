@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 19:15:46 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 21:22:28 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ t_coords		set_coords( int x, int y);
 /*	LIST STUFF================================================================*/
 
 t_data_list		*lstnew(t_data *img);
+t_data_list		*lstadd_front(t_data_list *lst, t_data *img);
+t_data_list		*lst_last(t_data_list *lst);
 
 /*	IMAGE STUFF===============================================================*/
 
@@ -115,9 +117,10 @@ void			create_wall(t_data *wall, int color, int ts);
 void			create_player(t_data *player, int color, int ts);
 void			create_exit(t_data *ex, int color, int ts);
 void			create_coll(t_data *coll, int color, int ts);
+void			fill_square(t_data *square, int color, int ts);
 void			fill_images(t_vars *vars, int t_s);
 void			init_images(t_vars *vars, int ts);
-t_data_list		*colors_circular_linked_list(t_vars *vars, int color, int ts);
+t_data_list		*colors_circular_linked_list(t_vars *vars, int ts);
 
 /*	COLOR MANIPULATION========================================================*/
 

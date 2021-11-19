@@ -6,13 +6,13 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:20:01 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 18:37:59 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:31:54 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	fill_square(t_data *square, int color, int ts)
+void	fill_square(t_data *square, int color, int ts)
 {
 	int	i;
 	int	j;

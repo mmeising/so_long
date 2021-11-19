@@ -6,13 +6,13 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:43:51 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 19:10:26 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:20:11 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_img_addr(t_vars *vars)
+static void	init_img_addr(t_vars *vars)
 {
 	vars->blck->addr = mlx_get_data_addr(vars->blck->img, &vars->blck->bpp,
 			&vars->blck->line_length, &vars->blck->endian);
