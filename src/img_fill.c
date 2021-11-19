@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:20:01 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 21:48:34 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 00:34:37 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,15 @@ void	create_player(t_data *player, int color, int ts)
 	}
 }
 
-void	fill_images(t_vars *vars, int ts)
+void	init_and_fill_images(t_vars *vars, int ts)
 {
+	init_images(vars, vars->map->t_s, vars->map->sz_x, vars->map->sz_y);
 	fill_square(vars->red, RED, ts);
 	fill_square(vars->green, GREEN, ts);
 	create_wall(vars->wall, TRANSP, ts);
 	create_player(vars->player, TRANSP, ts);
 	create_exit(vars->ex, TRANSP, ts);
 	create_coll(vars->coll, TRANSP, ts);
+	vars->steps = 0;
+	vars->slow = 0;
 }
