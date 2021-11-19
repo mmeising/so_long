@@ -6,13 +6,13 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 03:24:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 03:36:28 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:13:48 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// t_data_list *colors_circular_linked_list(t_vars *vars, int color, int ts)
+// t_data_list	*colors_circular_linked_list(t_vars *vars, int color, int ts)
 // {
 // 	t_data_list	*colors;
 // 	t_data_list	*temp;

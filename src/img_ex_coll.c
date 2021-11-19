@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 03:26:15 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 03:59:07 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:11:12 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	create_exit(t_data *ex, int color, int ts)
 
 void	create_coll(t_data *coll, int color, int ts)
 {
-	int r;
+	int	r;
 
 	r = ts / 4;
 	ft_put_circle(r, coll, color, set_coords(ts / 2, ts / 2));

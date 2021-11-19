@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:20:01 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 03:27:54 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 18:37:59 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void	fill_images(t_vars *vars, int ts)
 	fill_square(vars->green, GREEN, ts);
 	create_wall(vars->wall, TRANSP, ts);
 	create_player(vars->player, TRANSP, ts);
-	create_exit(vars->ex, TRANSP, ts);//TO DO
-	create_coll(vars->coll, TRANSP, ts);//TO DO
+	create_exit(vars->ex, TRANSP, ts);
+	create_coll(vars->coll, TRANSP, ts);
 }

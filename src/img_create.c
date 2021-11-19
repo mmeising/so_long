@@ -6,12 +6,11 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:43:51 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 03:24:53 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:10:26 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	init_img_addr(t_vars *vars)
 {
@@ -32,7 +31,6 @@ void	init_img_addr(t_vars *vars)
 			&vars->wall->line_length, &vars->wall->endian);
 }
 
-
 /*
  *	the set images (background colors red and green,
  *	transparent player, collectible, exit and wall) are malloc'd and configured
@@ -49,7 +47,6 @@ void	init_images(t_vars *vars, int ts)
 	vars->wall = malloc(sizeof(*(vars->wall)));
 	if (!(vars->blck && vars->red && vars->green && vars->player && vars->coll
 			&& vars->ex && vars->wall))
-	if (vars->red == NULL)
 		exit(error(EXIT_MALLOC_FAILED));
 	vars->blck->img = mlx_new_image(vars->mlx, vars->map->t_s * vars->map->sz_x,
 			vars->map->t_s * vars->map->sz_y);

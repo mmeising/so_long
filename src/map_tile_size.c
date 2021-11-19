@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:20:27 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 04:13:55 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:11:58 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	recursive_t_s(t_map *map)
 		map->t_s -= 2;
 		recursive_t_s(map);
 	}
-	else if (map->t_s < 15)
+	else if (map->t_s < 19)
 	{
 		printf("tile size would be: %i\n", map->t_s);
 		exit(error(EXIT_MAP_TOO_BIG));

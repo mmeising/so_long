@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 03:28:27 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 19:15:46 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct s_data_list
 	t_data				*img;
 	struct s_data_list	*next;
 }	t_data_list;
-
 
 typedef struct s_coords
 {
@@ -134,7 +133,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*	PLAYER STUFF==============================================================*/
 
-void	put_player_to_img(t_vars *vars);
+void			put_player_to_img(t_vars *vars);
 
 /*	BACKGROUND STUFF==========================================================*/
 
