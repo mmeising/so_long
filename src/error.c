@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 14:18:03 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 22:01:30 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 00:01:31 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	error(int err_code)
 	else if (err_code == EXIT_MALLOC_FAILED)
 		ft_putstr_fd("Could not allocate memory, malloc returned NULL\n", 2);
 	else if (err_code == EXIT_TOO_MANY_P)
-		ft_putstr_fd("Map has more than one P\n", 2);
+		ft_putstr_fd("Map too many P, max. 3 (1 player, 2 enemies)\n", 2);
 	else if (err_code == EXIT_WRONG_ARGUMENTS)
 		ft_putstr_fd("Usage: ./so_long <path to map>\n", 2);
 	return (err_code);
