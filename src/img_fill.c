@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:20:01 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 19:31:54 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 21:48:34 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	create_player(t_data *player, int color, int ts)
 	ft_put_circle(r, player, color, set_coords(ts / 2, ts / 2));
 	while (r > 1)
 	{
-		if (r % 5 == 0)
+		if (r % 10 == 0)
 			ft_put_circle(r, player, color, set_coords(ts / 2, ts / 2));
 		r--;
 	}

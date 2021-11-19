@@ -6,7 +6,7 @@
 #    By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 19:18:37 by mmeising          #+#    #+#              #
-#    Updated: 2021/11/19 03:36:53 by mmeising         ###   ########.fr        #
+#    Updated: 2021/11/19 22:04:00 by mmeising         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,9 +69,6 @@ obj/%.o: src/%.c $(HEADER_FILES)
 	@printf $(UP)$(CUT)
 	@echo Finished compiling $@
 	@printf $(UP)$(CUT)
-
-run: all
-	./so_long
 
 clean:
 	@echo Cleaning...

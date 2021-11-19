@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 21:22:28 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:00:29 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define EXIT_MAP_TOO_BIG 8//map is too big, tile size would be too small
 # define EXIT_MALLOC_FAILED 9//malloc returned NULL
 # define EXIT_TOO_MANY_P 10//more than one player pos is invalid
+# define EXIT_WRONG_ARGUMENTS 11//not 2 arguments given
 
 # define RED 0x00FF0000
 # define GREEN 0x00FF00
@@ -89,6 +90,7 @@ typedef struct s_vars
 	t_map		*map;
 	int			color;
 	int			steps;
+	int			slow;
 }	t_vars;
 
 /*	MAP STUFF=================================================================*/

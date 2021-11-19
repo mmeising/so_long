@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:10:46 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 21:33:13 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:02:43 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,6 @@ t_data_list	*lst_last(t_data_list *lst)
 		lst = lst->next;
 	}
 	return (lst);
-}
-
-/*
- *	creates new t_data_list pointer, sets img as its content and returns it
- */
-t_data_list	*lstnew(t_data *img)
-{
-	t_data_list	*ele;
-
-	ele = (t_data_list *)malloc(sizeof(*ele));
-	if (ele == NULL)
-		exit(error(EXIT_MALLOC_FAILED));
-	ele->img = img;
-	ele->next = NULL;
-	return (ele);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 21:37:50 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/19 22:00:09 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,25 @@ int	render_next_frame(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->blck->img, 0, 0);
 	put_tiles_to_img(vars);
 	put_player_to_img(vars);
-	vars->colors = vars->colors->next;
+	vars->slow++;
+	if (vars->slow == 5)
+	{
+		vars->colors = vars->colors->next;
+		vars->slow = 0;
+	}
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_vars	*vars;
 
+	if (argc != 2)
+		exit(error(EXIT_WRONG_ARGUMENTS));
 	vars = malloc(sizeof(*vars));
 	if (vars == NULL)
 		exit(error(EXIT_MALLOC_FAILED));
-	vars->map = check_map("maps/19x12.ber");
+	vars->map = check_map(argv[1]);
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, vars->map->t_s * vars->map->sz_x + 1,
 			vars->map->t_s * vars->map->sz_y, "so_long");
@@ -89,6 +96,7 @@ int	main(void)
 	init_images(vars, vars->map->t_s);
 	fill_images(vars, vars->map->t_s);
 	vars->steps = 0;
+	vars->slow = 0;
 	put_tiles_to_img(vars);
 	put_player_to_img(vars);
 	mlx_loop_hook(vars->mlx, render_next_frame, vars);
