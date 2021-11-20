@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 01:25:08 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 01:26:10 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 03:55:40 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,12 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 		dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 		*(unsigned int *)dst = color;
 	}
+}
+
+int	ft_close(int keycode, t_vars *vars)
+{
+	(void)vars;
+	(void)keycode;
+	exit(0);
+	return (0);
 }

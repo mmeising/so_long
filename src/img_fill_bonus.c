@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_fill.c                                         :+:      :+:    :+:   */
+/*   img_fill_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 19:20:01 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 03:54:02 by mmeising         ###   ########.fr       */
+/*   Created: 2021/11/20 03:27:05 by mmeising          #+#    #+#             */
+/*   Updated: 2021/11/20 03:27:24 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	fill_square(t_data *square, int color, int ts)
 {

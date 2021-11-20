@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 02:09:47 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 03:56:00 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@
 # define GREEN 0x00FF00
 # define TRANSP 0xFF000000
 
-/*
- *	image struct
- *	img.img is mlx_new_image(mlx, x, y);
- *	img.addr is mlx_get_data_addr(img.img, &img.bpp,
- *			&img.line_length, &img.endian);
- */
 typedef struct s_data
 {
 	void	*img;
@@ -92,6 +86,7 @@ typedef struct s_vars
 	t_data		*enemy;
 	t_data_list	*colors;
 	t_data_list	*colors_walls;
+	t_data_list	*colors_coll;
 	t_map		*map;
 	int			color;
 	int			steps;
@@ -110,6 +105,7 @@ t_map			*check_map(char *path);
 int				error(int err_code);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_coords		set_coords( int x, int y);
+int				ft_close(int keycode, t_vars *vars);
 
 /*	LIST STUFF================================================================*/
 
@@ -152,7 +148,6 @@ void			enemy_movement(t_vars *vars);
 /*	KEY STUFF=================================================================*/
 
 int				key_hook(int keycode, t_vars *vars);
-int				ft_close(int keycode, t_vars *vars);
 
 /*	CIRCLE STUFF==============================================================*/
 

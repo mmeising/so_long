@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 21:43:51 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 00:35:10 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 03:03:29 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_images(t_vars *vars, int ts, int x, int y)
 	if (!(vars->blck && vars->red && vars->green && vars->player && vars->coll
 			&& vars->ex && vars->wall && vars->enemy))
 		exit(error(EXIT_MALLOC_FAILED));
-	vars->blck->img = mlx_new_image(vars->mlx, ts * x, ts * y);
+	vars->blck->img = mlx_new_image(vars->mlx, ts * x, ts * y + 11);
 	vars->red->img = mlx_new_image(vars->mlx, ts, ts);
 	vars->green->img = mlx_new_image(vars->mlx, ts, ts);
 	vars->player->img = mlx_new_image(vars->mlx, ts, ts);

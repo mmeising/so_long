@@ -6,7 +6,7 @@
 #    By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 19:18:37 by mmeising          #+#    #+#              #
-#    Updated: 2021/11/20 02:24:59 by mmeising         ###   ########.fr        #
+#    Updated: 2021/11/20 03:43:55 by mmeising         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,10 @@ NAME := so_long
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 
-SRCS := so_long.c create_get_trgb.c put_circle.c \
-		color_rainbow.c key_hooks.c player_enemy_on_screen.c \
-		map_input.c error.c map_init_and_count.c map_tile_size.c list.c \
-		img_init.c img_fill.c utilities.c img_colors_list.c img_ex_coll_enemy.c enemy_movement.c
+SRCS := create_get_trgb.c put_circle.c color_rainbow.c key_hooks.c \
+		player_enemy_on_screen.c map_input.c error.c map_init_and_count.c \
+		map_tile_size.c list.c img_init.c img_fill.c utilities.c \
+		img_colors_list.c img_ex_coll_enemy.c enemy_movement.c so_long.c 
 
 SRCS := $(SRCS:%=src/%)
 OBJ := $(SRCS:src/%.c=obj/%.o)
@@ -45,6 +45,7 @@ CUT = "\033[K"
 
 all: $(NAME)
 
+bonus: all
 
 $(NAME): $(OBJ) $(LIBFT_NAME) $(MLX_NAME)
 	$(CC) $(CFLAGS) $(HEADER_FLAGS) $(MLX_FLAGS) $(OBJ) $(LIBFT_NAME) $(MLX_NAME) -o $(NAME)
