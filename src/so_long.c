@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 23:52:23 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 02:42:46 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,18 @@ int	render_next_frame(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->blck->img, 0, 0);
 	put_tiles_to_img(vars);
 	put_player_to_img(vars);
+	put_enemies_to_img(vars, vars->map->t_s);
+	check_player_on_enemy(vars, vars->map->p_pos.x, vars->map->p_pos.y);
 	vars->slow++;
-	if (vars->slow == 5)
+	if (vars->slow % 5 == 0)
 	{
 		vars->colors_walls = vars->colors_walls->next;
 		vars->colors = vars->colors->next;
-		vars->slow = 0;
+		if (vars->slow % 20 == 0)
+		{
+			vars->slow = 0;
+			enemy_movement(vars);
+		}
 	}
 	return (0);
 }

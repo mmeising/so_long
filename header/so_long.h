@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 00:34:34 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 02:09:47 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define EXIT_MALLOC_FAILED 9//malloc returned NULL
 # define EXIT_TOO_MANY_P 10//more than one player pos is invalid
 # define EXIT_WRONG_ARGUMENTS 11//not 2 arguments given
+# define EXIT_TOUCHED_ENEMY 12//player position == enemy position
 
 # define RED 0x00FF0000
 # define GREEN 0x00FF00
@@ -140,15 +141,13 @@ unsigned int	get_b(unsigned int trgb);
 
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-/*	PLAYER STUFF==============================================================*/
+/*	PLAYER AND ENEMY STUFF====================================================*/
 
 void			put_player_to_img(t_vars *vars);
-
-/*	BACKGROUND STUFF==========================================================*/
-
-t_data_list		*create_background(t_vars *vars);
-// void			ft_background_circles(t_vars *vars);
-// void			put_walls_on_screen(t_vars *vars);
+void			put_enemies_to_img(t_vars *vars, int ts);
+void			create_enemy(t_data *enemy, int color, int ts);
+void			check_player_on_enemy(t_vars *vars, int p_x, int p_y);
+void			enemy_movement(t_vars *vars);
 
 /*	KEY STUFF=================================================================*/
 

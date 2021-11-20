@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 19:20:01 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 00:34:37 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 01:52:26 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	init_and_fill_images(t_vars *vars, int ts)
 	create_player(vars->player, TRANSP, ts);
 	create_exit(vars->ex, TRANSP, ts);
 	create_coll(vars->coll, TRANSP, ts);
+	create_enemy(vars->enemy, TRANSP, ts);
 	vars->steps = 0;
 	vars->slow = 0;
 }

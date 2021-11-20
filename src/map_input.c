@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:41:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/19 23:59:48 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 01:52:48 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ t_map	*check_map(char *path)
 	map->count_p = 0;
 	map->count_e = 0;
 	map->count_c = 0;
+	map->enemy_p_0.x = 0;
+	map->enemy_p_0.y = 0;
+	map->enemy_p_1.x = 0;
+	map->enemy_p_1.y = 0;
 	is_rectangle_and_big_enough(map);
 	is_walled_and_valid_chars(map);
 	check_pec(map);
