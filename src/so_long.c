@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 03:57:12 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/20 04:04:04 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	render_next_frame(t_vars *vars)
 	if (vars->slow % 5 == 0)
 	{
 		shift_colors(vars);
-		if (vars->slow % 20 == 0)
+		if (vars->slow % 25 == 0)
 		{
 			vars->slow = 0;
 			enemy_movement(vars);
