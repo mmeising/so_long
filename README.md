@@ -3,11 +3,17 @@ Simple 2D game where the player has to collect things and
 leave through the exit afterwards, possibly escaping enemies.
 
 Maps are in .ber files and consist of:
+
 1 = walls
+
 0 = free spaces
+
 C = collectibles
+
 E = exits
+
 P = player position (or enemy position for second and third P)
+
 
 The map must be rectangular, walled off and have at least one P, E and C.
 Maximum 3 P's possible (player + 2 enemies).
