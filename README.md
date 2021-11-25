@@ -1,49 +1,44 @@
 # so_long - 42 Heilbronn
-Simple 2D game where the player can collect things and
-needs to leave through the exit.
+Simple 2D game where the player has to collect things and
+leave through the exit afterwards, possibly escaping enemies.
 
-player and collectible radius modulo?
-map tile_size standard and maximum window size?
-so_long.c lines 100 and 101 needed?
+Maps are in .ber files and consist of:
+1 = walls
+0 = free spaces
+C = collectibles
+E = exits
+P = player position (or enemy position for second and third P)
 
-# list of images in img_create
-# create exit and coll in img_fill
+The map must be rectangular, walled off and have at least one P, E and C.
+Maximum 3 P's possible (player + 2 enemies).
 
-To do:
+Summary of the program:
 
-1.	take input path to map, create a 2d array using get_next_line, ft_concat
-	and split
+1.	check_map:
+	take input path to map (given as argument), 
+	check if it's rectangular,
+	check if it's walled off,
+	check if it only consists of valid chars,
+	check if there is the correct amount of each char,
+	set the tile size
 
-2.	check if the map is correct (rectangular and walls on the edges)
+2.	colors_circular_linked_list:
+	create the circular linked list of the 90 cycling colors that is used
+	for the color shift of the walls, the collectibles, the player and
+	the exit once all collectibles are collected
 
-3.	set tile_size:
-	recursive function that decreases the tile_size (standard 101(?))
-	by 2 if tile_size * tiles_in_x > 1920(?) or tile_size * tiles_in_y > 1080(?)
-	and calls itself, otherwise returns
+3.	init_and_fill_images:
+	create the red and green squares,
+	create the player, exit, collectible (and exit) transparent images,
+	set the steps and slow variables to 0
 
-4.	create linked lists of coordinate pairs where the walls, player positions,
-	exits and collectibles are. Set one player position inside map struct
-	EDIT: no more linked list, for every new frame just go through the 2d array
-	and put 1, P, E, C at the positions where they are. ignore 0 as new image
-	will have it blacked out anyway
-
-5.	create 90(?) images of tile_size * tile_size, each fully colored in an RGB 
-	setting 17(?) steps from last (change_color_rainbow function)
-
-6.	create player (transparent concentric circles), walls (transparent squares)
-	and exit (?) images
-
-7.	create base image of tile_size * tiles_in_x width and
-	tile_size * tiles_in_y height
-
-8.	every next screen render needs to:
-	-	change to next background color
-	-	put it on player, walls, exits and collectibles positions
-	-	put all corresponding transparent images on top of background color
-
-9.	on WASD key presses:
-	-	check if spot is movable to and change player position, count_moves++
-	-	put black image of tile_size * tile_size at old player position
-	-	if player position == collectible position, delete that collectible
-		from re-render (list management?) and count_collected++
-	-	if player position == exit position, close game - finished!
+4.	render_next_frame:
+	put a black image on the window (cleaning the window),
+	put the tiles (walls, collectibles, exits) to the image,
+	put the player to the image,
+	put the count of stepps to the image,
+	iterate the slow variable and cycle the colors every third iteration,
+	if enemies exist:
+		use rand() every 24th iteration of slow to make them move,
+		put enemies to the image,
+		check if the enemy position is on the player position
