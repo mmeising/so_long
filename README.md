@@ -7,7 +7,7 @@ leave through the exit afterwards, possibly escaping enemies.
 ![so_long_6x4](https://user-images.githubusercontent.com/93228604/143488066-17dd5edb-9e3e-4420-a585-84d5b1fd209a.gif)
 
 
-**Example using maps/19x12_bonus.ber:**
+**Example using maps/19x12_bonus.ber with enemies following the player:**
 
 ![so_long_19x12_enemies](https://user-images.githubusercontent.com/93228604/143488086-7f1f7a85-33c7-4772-b5ff-65299983ab27.gif)
 
