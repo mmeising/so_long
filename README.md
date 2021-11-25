@@ -40,14 +40,14 @@ Summary of the program:
 
 3.	init_and_fill_images:
 	- create the red and green squares,
-	- create the player, exit, collectible (and exit) transparent images,
+	- create the player, exit and collectible transparent images,
 	- set the steps and slow variables to 0
 
 4.	render_next_frame:
 	- put a black image on the window (cleaning the window),
 	- put the tiles (walls, collectibles, exits) to the image,
 	- put the player to the image,
-	- put the count of stepps to the image,
+	- put the count of steps to the image,
 	- iterate the slow variable and cycle the colors every third iteration,
 	- if enemies exist:
 		- use rand() every 24th iteration of slow to make them move,
