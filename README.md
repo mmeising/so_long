@@ -2,6 +2,15 @@
 Simple 2D game where the player has to collect things and
 leave through the exit afterwards, possibly escaping enemies.
 
+**Example using maps/6x4.ber:**
+
+![so_long_6x4](https://user-images.githubusercontent.com/93228604/143488066-17dd5edb-9e3e-4420-a585-84d5b1fd209a.gif)
+
+
+**Example using maps/19x12_bonus.ber:**
+
+![so_long_19x12_enemies](https://user-images.githubusercontent.com/93228604/143488086-7f1f7a85-33c7-4772-b5ff-65299983ab27.gif)
+
 Maps are in .ber files and consist of:
 
 - 1 = walls
