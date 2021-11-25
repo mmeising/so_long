@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:24 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 04:04:04 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/25 16:58:07 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static void	shift_colors(t_vars *vars)
 	vars->colors_coll = vars->colors_coll->next;
 	vars->colors = vars->colors->next;
 }
+
 /*
  *	depending on the map, vars->slow % x can be changed as a difficulty setting
  *	for example on 19x12, x = 20 is hard, x = 30 is much easier
@@ -80,21 +81,21 @@ int	render_next_frame(t_vars *vars)
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->blck->img, 0, 0);
 	put_tiles_to_img(vars);
 	put_player_to_img(vars);
-	put_enemies_to_img(vars, vars->map->t_s);
-	check_player_on_enemy(vars, vars->map->p_pos.x, vars->map->p_pos.y);
 	mlx_string_put(vars->mlx, vars->win, 0, y * ts + 10, RED, "Steps taken:");
 	mlx_string_put(vars->mlx, vars->win, 100, y * ts + 10, RED,
 		ft_itoa(vars->steps));
 	vars->slow++;
-	if (vars->slow % 5 == 0)
-	{
+	if (vars->slow % 3 == 0)
 		shift_colors(vars);
-		if (vars->slow % 25 == 0)
-		{
-			vars->slow = 0;
+	if (vars->map->enemy_p_0.x || vars->map->enemy_p_1.x)
+	{
+		if (vars->slow % 24 == 0)
 			enemy_movement(vars);
-		}
+		put_enemies_to_img(vars, vars->map->t_s);
+		check_player_on_enemy(vars, vars->map->p_pos.x, vars->map->p_pos.y);
 	}
+	if (vars->slow % 24 == 0)
+		vars->slow = 0;
 	return (0);
 }
 
@@ -102,7 +103,7 @@ int	main(int argc, char **argv)
 {
 	t_vars	*vars;
 
-	if (argc != 2)
+	if (argc != 2 || !is_ber_file(argv[1]))
 		exit(error(EXIT_WRONG_ARGUMENTS));
 	vars = malloc(sizeof(*vars));
 	if (vars == NULL)
@@ -117,4 +118,5 @@ int	main(int argc, char **argv)
 	mlx_key_hook(vars->win, key_hook, vars);
 	mlx_hook(vars->win, 17, 1L << 17, ft_close, &vars);
 	mlx_loop(vars->mlx);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 03:56:00 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:32:33 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define EXIT_TOO_MANY_P 10//more than one player pos is invalid
 # define EXIT_WRONG_ARGUMENTS 11//not 2 arguments given
 # define EXIT_TOUCHED_ENEMY 12//player position == enemy position
+# define EXIT_MAP_NL 13//map has newline at beginning, end or in between
 
 # define RED 0x00FF0000
 # define GREEN 0x00FF00
@@ -99,6 +100,7 @@ void			is_pec(t_map *map, size_t x, size_t y);
 void			init_map_values(t_map *map, char *path);
 void			set_tile_size(t_map *map);
 t_map			*check_map(char *path);
+int				nl_map_fail(char *line);
 
 /*	UTILITIES=================================================================*/
 
@@ -106,6 +108,7 @@ int				error(int err_code);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_coords		set_coords( int x, int y);
 int				ft_close(int keycode, t_vars *vars);
+int				is_ber_file(char *path);
 
 /*	LIST STUFF================================================================*/
 

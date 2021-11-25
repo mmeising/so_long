@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 21:41:54 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 03:41:51 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/25 17:26:30 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static char	**save_in_2d_array(t_map *map)
 			break ;
 		line = ft_strcon(&line, &temp);
 	}
+	if (nl_map_fail(line) == 1)
+		exit(error(EXIT_MAP_NL));
 	return (ft_split(line, '\n'));
 }
 

@@ -6,14 +6,11 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 02:09:08 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 02:42:42 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/11/24 20:04:36 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//enemy_movable function to check if new pos is '0' and not already
-//an enemy position -> return 1, otherwise returns 0
 
 int	enemy_movable(t_vars *vars, int x, int y)
 {
