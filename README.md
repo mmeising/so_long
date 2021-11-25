@@ -35,8 +35,8 @@ Summary of the program:
 
 2.	colors_circular_linked_list:
 	- create the circular linked list of the 90 cycling colors that is used
-	- for the color shift of the walls, the collectibles, the player and
-	- the exit once all collectibles are collected
+	for the color shift of the walls, the collectibles, the player and
+	the exit once all collectibles are collected
 
 3.	init_and_fill_images:
 	- create the red and green squares,
