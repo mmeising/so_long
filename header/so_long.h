@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 19:18:58 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/25 17:32:33 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/12/05 17:06:39 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ int				is_ber_file(char *path);
 
 /*	LIST STUFF================================================================*/
 
-t_data_list		*lstnew(t_data *img);
 t_data_list		*lstadd_front(t_data_list *lst, t_data *img);
 t_data_list		*lst_last(t_data_list *lst);
 
@@ -137,7 +136,6 @@ unsigned int	get_t(unsigned int trgb);
 unsigned int	get_r(unsigned int trgb);
 unsigned int	get_g(unsigned int trgb);
 unsigned int	get_b(unsigned int trgb);
-
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 /*	PLAYER AND ENEMY STUFF====================================================*/
@@ -156,7 +154,5 @@ int				key_hook(int keycode, t_vars *vars);
 
 void			ft_put_circle(int r, t_data *img, unsigned int color,
 					t_coords middle);
-
-void			prnt(char *str);
 
 #endif
