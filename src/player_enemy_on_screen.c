@@ -6,7 +6,7 @@
 /*   By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 19:01:25 by mmeising          #+#    #+#             */
-/*   Updated: 2021/11/20 02:05:48 by mmeising         ###   ########.fr       */
+/*   Updated: 2021/12/05 17:02:40 by mmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	check_player_on_enemy(t_vars *vars, int p_x, int p_y)
 	e1_y = vars->map->enemy_p_1.y;
 	if ((p_x == e0_x && p_y == e0_y) || (p_x == e1_x && p_y == e1_y))
 	{
-		printf("Game Over!\nPlayer touched the enemy\n");
+		printf("Game Over!\nThe enemy got you!\n");
 		exit(EXIT_TOUCHED_ENEMY);
 	}
 }
