@@ -2,6 +2,15 @@
 Simple 2D game where the player has to collect things and
 leave through the exit afterwards, possibly escaping enemies.
 
+**Example using maps/6x4.ber:**
+
+![so_long_6x4](https://user-images.githubusercontent.com/93228604/143488066-17dd5edb-9e3e-4420-a585-84d5b1fd209a.gif)
+
+
+**Example using maps/19x12_bonus.ber with enemies following the player:**
+
+![so_long_19x12_enemies](https://user-images.githubusercontent.com/93228604/143488086-7f1f7a85-33c7-4772-b5ff-65299983ab27.gif)
+
 Maps are in .ber files and consist of:
 
 - 1 = walls
@@ -26,19 +35,19 @@ Summary of the program:
 
 2.	colors_circular_linked_list:
 	- create the circular linked list of the 90 cycling colors that is used
-	- for the color shift of the walls, the collectibles, the player and
-	- the exit once all collectibles are collected
+	for the color shift of the walls, the collectibles, the player and
+	the exit once all collectibles are collected
 
 3.	init_and_fill_images:
 	- create the red and green squares,
-	- create the player, exit, collectible (and exit) transparent images,
+	- create the player, exit and collectible transparent images,
 	- set the steps and slow variables to 0
 
 4.	render_next_frame:
 	- put a black image on the window (cleaning the window),
 	- put the tiles (walls, collectibles, exits) to the image,
 	- put the player to the image,
-	- put the count of stepps to the image,
+	- put the count of steps to the image,
 	- iterate the slow variable and cycle the colors every third iteration,
 	- if enemies exist:
 		- use rand() every 24th iteration of slow to make them move,
