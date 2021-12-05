@@ -6,7 +6,7 @@
 #    By: mmeising <mmeising@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/14 19:18:37 by mmeising          #+#    #+#              #
-#    Updated: 2021/11/25 17:24:43 by mmeising         ###   ########.fr        #
+#    Updated: 2021/12/05 17:10:51 by mmeising         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ $(LIBFT_NAME):
 	@echo Compiling libft
 	@make -C ./libft/
 	@printf $(UP)$(CUT)
-	@echo Finished compiling mlx
+	@echo Finished compiling libft
 
 $(MLX_NAME):
 	@echo Compiling mlx
@@ -77,12 +77,20 @@ clean:
 	@rm -rf obj/
 	@printf $(UP)$(CUT)
 	@echo Cleaned!
+	@echo Cleaning libft...
+	@make -C ./libft/ clean
+	@printf $(UP)$(CUT)
+	@echo Cleaned libft!
 
 fclean: clean
 	@echo Cleaning...
 	@rm -f $(NAME)
 	@printf $(UP)$(CUT)
 	@echo Cleaned!
+	@echo Cleaning libft...
+	@make -C ./libft/ fclean
+	@printf $(UP)$(CUT)
+	@echo Cleaned libft!
 
 re: fclean all
 
